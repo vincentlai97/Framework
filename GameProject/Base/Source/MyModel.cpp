@@ -3,8 +3,6 @@
 #include "MeshBuilder.h"
 #include "LoadTGA.h"
 
-//TEMP
-#include "Projectile\Projectile.h"
 #include "Projectile\Projectile-OBB.hpp"
 
 MyModel::MyModel() : Model_3D()
@@ -25,7 +23,15 @@ Projectile projectile;
 
 void MyModel::Init()
 {
-	camera.Init(Vector3(0, 0, 5), Vector3(), Vector3(0, 1, 0));
+	camera.Init(Vector3(0, 5, 5), Vector3(), Vector3(0, 1, 0));
+
+	//Floor
+	node = new SceneNode();
+	mesh = MeshBuilder::GenerateQuad("floor", Color(0, 0, -0.3f), 200.f);
+	mesh->textureID[0] = LoadTGA("Image//floor.tga");
+	node->SetMesh(mesh);
+	node->Rotate(-90, glm::vec3(1, 0, 0));
+	m_worldNode->AddChild("floor", node);
 
 	node = new SceneNode();
 	mesh = MeshBuilder::GenerateOBJ("suzanne", "OBJ//suzanne.obj");
@@ -44,12 +50,36 @@ void MyModel::Init()
 	m_worldNode->AddChild("suzanne2", node);
 	m_spatialPartition->AddSceneNode(node);
 
+	m_TPC.m_camera = &(this->camera);
+	m_TPC.m_object = dynamic_cast<SceneNode*>(m_worldNode->GetChildNode("suzanne"));
+	m_TPC.m_cameraOffset = glm::vec3(-1, 1, -2);
+	m_TPC.m_direction = glm::vec3(0, 0, 1);
+	m_TPC.m_up = glm::vec3(0, 1, 0);
+
 	projectile.m_position = glm::vec3(0, 0, 0);
 }
 
+#define CAMERA_SPEED 50.f
+
+std::map<Model_3D::CAMERA_MOVEMENT, void (ThirdPersonCamera::*)(float)> func_third_person_camera_movement = {
+	{ Model_3D::CAMERA_MOVEMENT::MOVE_FORWARD, &ThirdPersonCamera::MoveForward },
+	{ Model_3D::CAMERA_MOVEMENT::MOVE_BACKWARD, &ThirdPersonCamera::MoveBackward },
+	{ Model_3D::CAMERA_MOVEMENT::MOVE_LEFT, &ThirdPersonCamera::MoveLeft },
+	{ Model_3D::CAMERA_MOVEMENT::MOVE_RIGHT, &ThirdPersonCamera::MoveRight }
+};
+std::map<Model_3D::CAMERA_ROTATION, void (ThirdPersonCamera::*)(float)> func_third_person_camera_rotation = {
+	{ Model_3D::CAMERA_ROTATION::ROTATE_UP, &ThirdPersonCamera::LookUp },
+	{ Model_3D::CAMERA_ROTATION::ROTATE_LEFT, &ThirdPersonCamera::LookLeft }
+};
+
 void MyModel::Update(double dt)
 {
-	Model_3D::Update(dt);
+	for (auto iter : all_camera_movement)
+	if (camera_movement.at(iter))
+		(m_TPC.*(func_third_person_camera_movement.at(iter)))(dt * CAMERA_SPEED);
+
+	for (auto iter : all_camera_rotation)
+		(m_TPC.*(func_third_person_camera_rotation.at(iter)))(camera_rotation.at(iter) * 0.1f);
 
 	SceneNode *suzanne = dynamic_cast<SceneNode*>(m_worldNode->GetChildNode("suzanne"));
 	SceneNode *suzanne2 = dynamic_cast<SceneNode*>(m_worldNode->GetChildNode("suzanne2"));
@@ -76,4 +106,7 @@ void MyModel::Update(double dt)
 			m_projectileManager.AddProjectile(projectile);
 		}
 	}
+
+	ResetCameraMovement();
+	ResetCameraRotation();
 }

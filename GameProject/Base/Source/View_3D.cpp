@@ -19,7 +19,7 @@ Mesh *OBBFrame = MeshBuilder::GenerateCube("obbframe", Color(1, 0, 0), 1.f);
 	modelStack.push(modelStack.top()); {
 		modelStack.top() *= node->GetTransform();
 		if (node->GetMesh() != nullptr)
-			RenderMesh(node->GetMesh(), false);
+			RenderMesh(node->GetMesh(), true);
 #ifdef RENDEROBB
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		glDisable(GL_CULL_FACE);

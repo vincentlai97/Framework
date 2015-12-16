@@ -89,9 +89,6 @@
     <ClCompile Include="Source\OrientedBoundingBox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\View_3D.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Spatial Partition\SpatialPartition.cpp">
       <Filter>Spatial Partition Files</Filter>
     </ClCompile>
@@ -106,6 +103,12 @@
     </ClCompile>
     <ClCompile Include="Source\Projectile\ProjectileManager.cpp">
       <Filter>Projectile</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\View_3D.cpp">
+      <Filter>MVC</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ThirdPersonCamera.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -187,9 +190,6 @@
     <ClInclude Include="Source\OrientedBoundingBox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\View_3D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Spatial Partition\SpatialPartition.h">
       <Filter>Spatial Partition Files</Filter>
     </ClInclude>
@@ -207,6 +207,12 @@
     </ClInclude>
     <ClInclude Include="Source\Projectile\Projectile-OBB.hpp">
       <Filter>Projectile</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\View_3D.h">
+      <Filter>MVC</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ThirdPersonCamera.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

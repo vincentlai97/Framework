@@ -27,9 +27,13 @@ public:
 	OrientedBoundingBox GetOBB() const { return OBB; }
 	OrientedBoundingBox GetTransformedOBB(SceneNode *root);
 
-	void Translate(const glm::vec3 &translate) { transform *= glm::translate(translate); }
+	void Translate(const glm::vec3 &translate) { transform = glm::translate(transform, translate); }
 	void Rotate(const float &angle, const glm::vec3 &axes) { transform = glm::rotate(transform, angle, axes); }
 	void Scale(const glm::vec3 &scale) { transform = glm::scale(transform, scale); }
+
+	void PostTranslate(const glm::vec3 &translate) { transform = glm::translate(translate) * transform; }
+	void PostRotate(const float &angle, const glm::vec3 &axes) { transform = glm::rotate(angle, axes) * transform; }
+	void PostScale(const glm::vec3 &scale) { transform = glm::scale(scale) * transform; }
 
 	bool CheckCollision(SceneNode *other, SceneNode *root);
 

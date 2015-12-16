@@ -34,6 +34,7 @@
     <ClCompile Include="Source\Spatial Partition\SpatialPartition.cpp" />
     <ClCompile Include="Source\Spatial Partition\SpatialPartitionGrid.cpp" />
     <ClCompile Include="Source\SpriteAnimation.cpp" />
+    <ClCompile Include="Source\ThirdPersonCamera.cpp" />
     <ClCompile Include="Source\TileMap.cpp" />
     <ClCompile Include="Source\Utility.cpp" />
     <ClCompile Include="Source\View.cpp" />
@@ -68,6 +69,7 @@
     <ClInclude Include="Source\Spatial Partition\SpatialPartition.h" />
     <ClInclude Include="Source\Spatial Partition\SpatialPartitionGrid.h" />
     <ClInclude Include="Source\SpriteAnimation.h" />
+    <ClInclude Include="Source\ThirdPersonCamera.h" />
     <ClInclude Include="Source\TileMap.h" />
     <ClInclude Include="Source\Utility.h" />
     <ClInclude Include="Source\Vertex.h" />

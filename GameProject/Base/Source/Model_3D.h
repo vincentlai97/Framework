@@ -43,6 +43,9 @@ protected:
 
 	virtual void UpdateCameraMovement(double dt);
 	virtual void UpdateCameraRotation(double dt);
+
+	virtual void ResetCameraMovement();
+	virtual void ResetCameraRotation();
 };
 
 #define NUM_CAMERA_MOVEMENT 4U

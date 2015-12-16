@@ -3,6 +3,7 @@
 
 #include "Model_3D.h"
 
+#include "ThirdPersonCamera.h"
 #include "Projectile\ProjectileManager.h"
 
 class MyModel : public Model_3D
@@ -24,6 +25,8 @@ public:
 	virtual ProjectileManager GetProjectileManager() { return m_projectileManager; }
 
 private:
+	ThirdPersonCamera m_TPC;
+
 	std::map<WEAPON_COMMANDS, bool> weapon_commands;
 
 	ProjectileManager m_projectileManager;

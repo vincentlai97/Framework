@@ -3,7 +3,7 @@
 #include "MeshBuilder.h"
 #include "LoadTGA.h"
 
-#define ARM_DEBUG
+#define CAMERA_SPEED 50.f
 
 Model_3D::Model_3D()
 {
@@ -48,11 +48,8 @@ void Model_3D::Update(double dt)
 	UpdateCameraMovement(dt);
 	UpdateCameraRotation(dt);
 
-	for (auto iter : all_camera_movement)
-		camera_movement.at(iter) = false;
-
-	for (auto iter : all_camera_rotation)
-		camera_rotation.at(iter) = 0.f;
+	ResetCameraMovement();
+	ResetCameraRotation();
 }
 
 void Model_3D::SetCommands(int command)
@@ -60,17 +57,29 @@ void Model_3D::SetCommands(int command)
 	commands[command] = true;
 }
 
+//Camera Movement
 void Model_3D::UpdateCameraMovement(double dt)
 {
-	//Camera Movement
 	for (auto iter : all_camera_movement)
 	if (camera_movement.at(iter))
-		(camera.*(func_camera_movement.at(iter)))(dt);
+		(camera.*(func_camera_movement.at(iter)))(dt * CAMERA_SPEED);
 }
 
+//Camera Rotation
 void Model_3D::UpdateCameraRotation(double dt)
 {
-	//Camera Rotation
 	for (auto iter : all_camera_rotation)
 		(camera.*(func_camera_rotation.at(iter)))(camera_rotation.at(iter) * 0.1f);
+}
+
+void Model_3D::ResetCameraMovement()
+{
+	for (auto iter : all_camera_movement)
+		camera_movement.at(iter) = false;
+}
+
+void Model_3D::ResetCameraRotation()
+{
+	for (auto iter : all_camera_rotation)
+		camera_rotation.at(iter) = 0.f;
 }
