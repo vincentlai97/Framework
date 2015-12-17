@@ -13,14 +13,13 @@ public:
 
 	virtual void Init();
 	virtual void RunLoop();
+	virtual void Update(double dt);
 
 protected:
 	Model* model;
 	View* view;
 
 	double m_dElapsedTime; // delta time
-
-	virtual void Update();
 
 	bool IsKeyPressed(int key) { return glfwGetKey(view->getWindow(), key) == GLFW_PRESS; }
 

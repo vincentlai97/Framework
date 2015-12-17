@@ -12,7 +12,7 @@
 
 #include "Model_3D.h"
 
-#define VIEW_DIMENSIONS 3
+#define VIEW_DIMENSIONS 2
 
 bool View::createWindow(const int& window_width, const int& window_height, const char* window_title, GLFWmonitor* monitor, GLFWwindow* share)
 {
@@ -204,7 +204,7 @@ void View::LightPass()
 	Mesh *RenderQuad = MeshBuilder::GenerateQuad("lightPass", Color(), 2.f);
 	projectionStack.push(glm::ortho(-1.f, 1.f, -1.f, 1.f));
 	viewStack.push(glm::mat4(1));
-	RenderMesh(RenderQuad, true);
+	RenderMesh(RenderQuad, false);
 	viewStack.pop();
 	projectionStack.pop();
 
@@ -295,15 +295,18 @@ void View::RenderObjectList(std::vector<Object*> objectList)
 
 void View::RenderWorldSceneNode(SceneNode *node)
 {
-	modelStack.push(modelStack.top()); {
-		modelStack.top() *= node->GetTransform();
-		if (node->GetMesh() != nullptr)
-			RenderMesh(node->GetMesh(), false);
-		for (auto iter : node->GetChildNodes())
-		{
-			RenderWorldSceneNode(dynamic_cast<SceneNode*>(node->GetChildNode(iter.first)));
-		}
-	} modelStack.pop();
+	if (node != nullptr)
+	{
+		modelStack.push(modelStack.top()); {
+			modelStack.top() *= node->GetTransform();
+			if (node->GetMesh() != nullptr)
+				RenderMesh(node->GetMesh(), false);
+			for (auto iter : node->GetChildNodes())
+			{
+				RenderWorldSceneNode(dynamic_cast<SceneNode*>(node->GetChildNode(iter.first)));
+			}
+		} modelStack.pop();
+	}
 }
 
 void View::RenderTextOnScreen(Mesh* mesh, std::string text, Color color, float size, float x, float y)

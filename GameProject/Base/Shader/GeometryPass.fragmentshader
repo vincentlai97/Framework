@@ -52,14 +52,14 @@ void main() {
 	// Color output
 	if(lightEnabled == true)
 	{
-		ambientColor = vec4(materialColor.xyz * material.kAmbient, 1);
+		ambientColor = vec4(materialColor.xyz * material.kAmbient, materialColor.w);
 		diffuseColor = vec4(materialColor.xyz * material.kDiffuse, 1);
 		specularColor = vec4(material.kSpecular, material.kShininess); //storing shininess in specular's alpha channel
 		emissiveColor = vec4(materialColor.xyz * material.kEmissive, 1);
 	}
 	else
 	{
-		ambientColor = vec4(materialColor.xyz, 1);
+		ambientColor = vec4(materialColor.xyz, materialColor.w);
 		diffuseColor = vec4(0, 0, 0, 1);
 		specularColor = vec4(0, 0, 0, 1);
 		emissiveColor = vec4(0, 0, 0, 1);

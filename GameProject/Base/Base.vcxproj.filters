@@ -24,6 +24,9 @@
     <Filter Include="Projectile">
       <UniqueIdentifier>{ec3fc9f2-194c-46db-b5c7-fd9d18f28dc4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="State">
+      <UniqueIdentifier>{8315f8f6-2651-492a-bbcb-bc0782556ee2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\main.cpp">
@@ -108,6 +111,27 @@
       <Filter>MVC</Filter>
     </ClCompile>
     <ClCompile Include="Source\ThirdPersonCamera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\State\StateManager.cpp">
+      <Filter>State</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\State\State.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\State\PlayState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MainMenuModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\State\MainMenuState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MenuController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MenuModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -212,6 +236,27 @@
       <Filter>MVC</Filter>
     </ClInclude>
     <ClInclude Include="Source\ThirdPersonCamera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\State\StateManager.h">
+      <Filter>State</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\State\State.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\State\PlayState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MainMenuModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\State\MainMenuState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MenuController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MenuModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

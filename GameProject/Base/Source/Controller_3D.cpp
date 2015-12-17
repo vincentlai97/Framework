@@ -14,12 +14,13 @@ void Controller_3D::Init()
 	glfwSetInputMode(view->getWindow(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 }
 
-void Controller_3D::Update()
+void Controller_3D::Update(double dt)
 {
 	Model_3D *model = dynamic_cast<Model_3D*>(this->model);
 
 #if CAMERA_MOVEMENT_TYPE == WASD
-	if (IsKeyPressed('W')) model->SetCommands(Model_3D::CAMERA_MOVEMENT::MOVE_FORWARD);
+	if (IsKeyPressed('W'))
+		model->SetCommands(Model_3D::CAMERA_MOVEMENT::MOVE_FORWARD);
 	if (IsKeyPressed('S')) model->SetCommands(Model_3D::CAMERA_MOVEMENT::MOVE_BACKWARD);
 	if (IsKeyPressed('A')) model->SetCommands(Model_3D::CAMERA_MOVEMENT::MOVE_LEFT);
 	if (IsKeyPressed('D')) model->SetCommands(Model_3D::CAMERA_MOVEMENT::MOVE_RIGHT);
@@ -37,5 +38,5 @@ void Controller_3D::Update()
 	MyModel *mymodel = dynamic_cast<MyModel*>(this->model);
 	mymodel->SetCommands(MyModel::WEAPON_COMMANDS::SHOOT, glfwGetMouseButton(view->getWindow(), GLFW_MOUSE_BUTTON_1) == GLFW_PRESS);
 
-	Controller::Update();
+	Controller::Update(dt);
 }

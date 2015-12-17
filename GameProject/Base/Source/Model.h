@@ -15,10 +15,12 @@ public:
 		NUM_COMMANDS,
 	};
 
+	Model();
+
 	virtual void Init();
 	virtual void Update(double dt);
 
-	virtual void SetCommands(int command) = 0;
+	virtual void SetCommands(int command) {}
 
 	const std::vector<Object *>& getObjectList() const { return m_objectList; }
 	const Camera3& getCamera() const { return camera; }

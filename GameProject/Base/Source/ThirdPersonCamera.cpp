@@ -34,12 +34,12 @@ void ThirdPersonCamera::MoveRight(const float dist)
 
 void ThirdPersonCamera::LookUp(const float angle)
 {
-	/*glm::vec3 right = glm::cross(m_direction, m_up);
+	glm::vec3 right = glm::cross(m_direction, m_up);
 	right.y = 0;
 	right = glm::normalize(right);
 	m_direction = glm::normalize(glm::vec3(glm::rotate(-angle, right) * glm::vec4(m_direction, 0)));
 	m_up = glm::normalize(glm::vec3(glm::rotate(-angle, right) * glm::vec4(m_up, 0)));
-	UpdateCamera();*/
+	UpdateCamera();
 }
 
 void ThirdPersonCamera::LookDown(const float angle)

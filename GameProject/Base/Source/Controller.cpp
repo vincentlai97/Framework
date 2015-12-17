@@ -53,28 +53,27 @@ const unsigned char FPS = 60; // FPS of this game
 const unsigned int frameTime = 1000 / FPS; // time for each frame
 static double m_dAccumulatedTime_ThreadOne = 0.0;
 static double m_dAccumulatedTime_ThreadTwo = 0.0;
-StopWatch m_timer;
 
 void Controller::RunLoop()
 {
-	m_timer.startTimer();
-	while (!glfwWindowShouldClose(view->getWindow()) && !IsKeyPressed(GLFW_KEY_ESCAPE))
-	{
-		// Get the elapsed time
-		m_dElapsedTime = m_timer.getElapsedTime();
-		m_dAccumulatedTime_ThreadOne += m_dElapsedTime;
-		m_dAccumulatedTime_ThreadTwo += m_dElapsedTime;
-		Update();
-		std::cout << 1.f / m_dElapsedTime << std::endl;
-		view->Render();
-		//Swap buffers
-		glfwSwapBuffers(view->getWindow());
-		glfwPollEvents();
-		m_timer.waitUntil(frameTime); // Frame rate limiter. Limits each frame to a specified time in ms.   
-	}
+	//m_timer.startTimer();
+	//while (!glfwWindowShouldClose(view->getWindow()) && !IsKeyPressed(GLFW_KEY_ESCAPE))
+	//{
+	//	// Get the elapsed time
+	//	m_dElapsedTime = m_timer.getElapsedTime();
+	//	m_dAccumulatedTime_ThreadOne += m_dElapsedTime;
+	//	m_dAccumulatedTime_ThreadTwo += m_dElapsedTime;
+	//	Update();
+	//	std::cout << 1.f / m_dElapsedTime << std::endl;
+	//	view->Render();
+	//	//Swap buffers
+	//	glfwSwapBuffers(view->getWindow());
+	//	glfwPollEvents();
+	//	m_timer.waitUntil(frameTime); // Frame rate limiter. Limits each frame to a specified time in ms.   
+	//}
 }
 
-void Controller::Update()
+void Controller::Update(double dt)
 {
-	model->Update(m_dElapsedTime);
+	model->Update(dt);
 }

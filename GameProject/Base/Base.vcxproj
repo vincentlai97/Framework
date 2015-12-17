@@ -20,6 +20,9 @@
     <ClCompile Include="Source\LoadOBJ.cpp" />
     <ClCompile Include="Source\LoadTGA.cpp" />
     <ClCompile Include="Source\main.cpp" />
+    <ClCompile Include="Source\MainMenuModel.cpp" />
+    <ClCompile Include="Source\MenuController.cpp" />
+    <ClCompile Include="Source\MenuModel.cpp" />
     <ClCompile Include="Source\Mesh.cpp" />
     <ClCompile Include="Source\MeshBuilder.cpp" />
     <ClCompile Include="Source\Model.cpp" />
@@ -34,6 +37,10 @@
     <ClCompile Include="Source\Spatial Partition\SpatialPartition.cpp" />
     <ClCompile Include="Source\Spatial Partition\SpatialPartitionGrid.cpp" />
     <ClCompile Include="Source\SpriteAnimation.cpp" />
+    <ClCompile Include="Source\State\MainMenuState.cpp" />
+    <ClCompile Include="Source\State\PlayState.cpp" />
+    <ClCompile Include="Source\State\State.cpp" />
+    <ClCompile Include="Source\State\StateManager.cpp" />
     <ClCompile Include="Source\ThirdPersonCamera.cpp" />
     <ClCompile Include="Source\TileMap.cpp" />
     <ClCompile Include="Source\Utility.cpp" />
@@ -52,7 +59,10 @@
     <ClInclude Include="Source\LoadHmap.h" />
     <ClInclude Include="Source\LoadOBJ.h" />
     <ClInclude Include="Source\LoadTGA.h" />
+    <ClInclude Include="Source\MainMenuModel.h" />
     <ClInclude Include="Source\Material.h" />
+    <ClInclude Include="Source\MenuController.h" />
+    <ClInclude Include="Source\MenuModel.h" />
     <ClInclude Include="Source\Mesh.h" />
     <ClInclude Include="Source\MeshBuilder.h" />
     <ClInclude Include="Source\Model.h" />
@@ -69,6 +79,10 @@
     <ClInclude Include="Source\Spatial Partition\SpatialPartition.h" />
     <ClInclude Include="Source\Spatial Partition\SpatialPartitionGrid.h" />
     <ClInclude Include="Source\SpriteAnimation.h" />
+    <ClInclude Include="Source\State\MainMenuState.h" />
+    <ClInclude Include="Source\State\PlayState.h" />
+    <ClInclude Include="Source\State\State.h" />
+    <ClInclude Include="Source\State\StateManager.h" />
     <ClInclude Include="Source\ThirdPersonCamera.h" />
     <ClInclude Include="Source\TileMap.h" />
     <ClInclude Include="Source\Utility.h" />

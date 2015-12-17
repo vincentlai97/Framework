@@ -35,6 +35,7 @@ void main()
    	vec3 vertexPosition_cameraspace = texture(positionMap, texCoord).xyz;
    	vec3 vertexNormal_cameraspace = texture(normalMap, texCoord).xyz;
    	vec3 ambient = texture(ambientMap, texCoord).xyz;
+	float transparency = texture(ambientMap, texCoord).w;
    	vec3 diffuse = texture(diffuseMap, texCoord).xyz;
    	vec3 specular = texture(specularMap, texCoord).xyz;
    	float shininess = texture(specularMap, texCoord).w;
@@ -107,5 +108,5 @@ void main()
 	}
 	else color.xyz = ambient;
 
-	color.w = 1;
+	color.w = transparency;
 }

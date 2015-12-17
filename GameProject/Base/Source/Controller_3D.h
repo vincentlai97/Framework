@@ -13,7 +13,7 @@ public:
 	virtual void Init();
 
 protected:
-	virtual void Update();
+	virtual void Update(double dt);
 
 };
 
